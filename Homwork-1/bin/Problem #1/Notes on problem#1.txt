@@ -1,0 +1,17 @@
+These are the notes on problem #1
+
+PROBLEM:
+1. Big O-notation
+O(1)  O(n)  O(n^2)  O(n^3) O(logn ) O(nlogn)
+N = 100, 1000, 10000, 100000, 1000000
+
+a.	Sketch the graph and make a table to compare rate of growth 
+b.	Analyze Binary search, linear search, and  using Big –O notation
+	c.	Compare  Arrays vs Arraylist  and  analyze using Big –O 		notation.
+d.	Analyze at least three sorting methods, such as Insertion sort, selection, quick, shell, merge sort using big –O notation
+	e. 	Generics type and Example
+
+————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————— 
+
+
+STRATEGY FOR SOLVING PROBLEM
