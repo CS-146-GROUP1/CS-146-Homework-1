@@ -1,5 +1,10 @@
-import java.util.Scanner;
-
+/**
+ * Implementation of method
+ * this code was acquired from 
+ * 	http://www.javawithus.com/programs/towers-of-hanoi
+ * @author javawithus.com
+ *
+ */
 public class TowersOfHanoi 
 {
 	public void solve(int n, String start, String auxiliary, String end) 
@@ -22,13 +27,5 @@ public class TowersOfHanoi
 			// Steps 1 and 3 are recursive steps
 		}
 	}
-
-	public static void main(String[] args) 
-	{
-		TowersOfHanoi towersOfHanoi = new TowersOfHanoi();
-		System.out.print("Enter number of discs: ");
-		Scanner in = new Scanner(System.in);
-		int discs = in.nextInt();
-		towersOfHanoi.solve(discs, "A", "B", "C");
-	}
 }
+
