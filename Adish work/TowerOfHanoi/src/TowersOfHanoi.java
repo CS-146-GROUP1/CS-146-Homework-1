@@ -27,8 +27,8 @@ public class TowersOfHanoi
 	{
 		TowersOfHanoi towersOfHanoi = new TowersOfHanoi();
 		System.out.print("Enter number of discs: ");
-		Scanner scanner = new Scanner(System.in);
-		int discs = scanner.nextInt();
+		Scanner in = new Scanner(System.in);
+		int discs = in.nextInt();
 		towersOfHanoi.solve(discs, "A", "B", "C");
 	}
 }
