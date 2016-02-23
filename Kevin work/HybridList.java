@@ -9,6 +9,7 @@ public class HybridList<T> implements Iterable<T>{
 
 	private Node root;
 	private int maxElements;
+	private int totalElements;
 	
 	public HybridList(){
 		this.maxElements = 5; //Default value
@@ -29,7 +30,6 @@ public class HybridList<T> implements Iterable<T>{
 			for(int i=0; i<traverse.numElements; i++){
 				if(traverse.elements.get(i) == element)
 					return traverse.elements.get(i);
-				
 			}
 			traverse = traverse.next;
 		}
@@ -62,6 +62,7 @@ public class HybridList<T> implements Iterable<T>{
 		if(node.numElements < maxElements){
 			node.elements.add(element);
 			node.numElements++;
+			totalElements++;
 			return true;
 		}
 		return false;
@@ -80,12 +81,13 @@ public class HybridList<T> implements Iterable<T>{
 	public void remove(T element){
 		Node traverse = root;
 		boolean foundElement = false;
-		while(traverse.next != null && !foundElement){
+		while(traverse != null && !foundElement){
 			for(int i=0; i<traverse.numElements; i++){
 				if(traverse.elements.get(i) == element){
 					traverse.elements.remove(i);
 					traverse.numElements--;
-					foundElement = true;	//So it'll stop iterating!	
+					totalElements--;
+					return;
 				}
 			}
 			traverse = traverse.next;
@@ -95,23 +97,30 @@ public class HybridList<T> implements Iterable<T>{
 		//Ghetto as fuck sort
 		Node traverse = root;
 		ArrayList<T> elements = new ArrayList<>();
-		while(traverse.next != null){
-			for(int i=0; i<traverse.numElements; i++)
+		while(traverse != null){
+			
+			for(int i=0; i<traverse.numElements; i++){
 				elements.add(traverse.elements.get(i));
+				
+			}
 			traverse = traverse.next;
 		}
+		totalElements = 0;
 		//Clear linked list
 		traverse = root;
 		Node prev = root;
-		while(traverse.next != null){
+		while(traverse != null){
 			prev = traverse;
 			traverse = traverse.next;
 			prev = null;
 		}
+		root = null;
 		//Cheat way to get natural order comparator
 		Collections.sort(elements, Collections.reverseOrder(Collections.reverseOrder()));
-		for(int i=0; i<elements.size(); i++)
+		for(int i=0; i<elements.size(); i++){
 			add(elements.get(i));
+		}
+		
 	}
 	@Override
 	public Iterator<T> iterator() {
@@ -135,22 +144,63 @@ public class HybridList<T> implements Iterable<T>{
 		};
 		return it;
 	}
-	
-	
+	public int size(){
+		return totalElements;
+	}
+	public T get(int index){
+		if(index < totalElements){
+			int inner = index % maxElements;
+			int node = index / maxElements; //how far to traverse
+			Node traverse = root;
+			while(node != 0){
+				node--;
+				traverse = traverse.next;
+			}
+			return traverse.elements.get(inner);
+		}
+		return null;
+	}
 	//Testing
 	public static void main(String[] args){
 		HybridList<Integer> myHybridList = new HybridList<Integer>(5);
 		myHybridList.add(5);
-		myHybridList.add(3);
-		myHybridList.add(2);
-		myHybridList.add(1);
 		myHybridList.add(6);
-		myHybridList.add(8);
+		myHybridList.add(3);
 		myHybridList.add(10);
+		myHybridList.add(2);
+		myHybridList.add(8);
+		myHybridList.add(7);
+		myHybridList.add(4);
+		myHybridList.add(1);
 		
+		//Test search!
 		if(myHybridList.search(10) != null)
-			System.out.println("found");
+			System.out.println("Has found 10");
 		if(myHybridList.search(11) == null)
-			System.out.println("not found");
+			System.out.println("Did not find 11");
+		
+		//Test sort!
+		System.out.println("Before sort");
+		for(int i=0; i<myHybridList.size(); i++){
+			System.out.print(myHybridList.get(i) + " ");
+		}
+		myHybridList.sort();
+		
+		System.out.println("After sort");
+		for(int i=0; i<myHybridList.size(); i++){
+			System.out.print(myHybridList.get(i) + " ");
+		}
+		
+		System.out.println();
+		//Test remove!
+		myHybridList.remove(10);
+		System.out.println("Removed 10");
+		if(myHybridList.search(10) != null)
+			System.out.println("Has found 10");
+		System.out.println("After removal");
+		for(int i=0; i<myHybridList.size(); i++){
+			System.out.print(myHybridList.get(i) + " ");
+		}
+		
 	}
 }
