@@ -17,12 +17,11 @@ public class IsPrime
 	public static void main(String[] args) 
 	{
 		Scanner in = new Scanner(System.in);
-		System.out.println("Please input a number");		
+		System.out.println("Please input a positive whole number");		
 //		PrimeChecker check; // checks if number is prime               might delete
 		int N = in.nextInt();
-		System.out.println("The number that you have entered is " + N);
-
-		System.out.println( N + " % 2 = " + (N % 2) );
+		
+		System.out.println("You have entered: " + N);
 		// boolean isPrime = false;
 		CheckIfComposite(N);
 //		check.CheckIfPrime(n); might delete
@@ -39,19 +38,15 @@ public class IsPrime
 	{
 		ArrayList<Integer> factors = new ArrayList<>();
 		boolean isAFactor = false; // this is a check switch
-		
+		long start = System.currentTimeMillis();
 		// Dealing with the standard factors 1 and the number inputed itself
 		
 				factors.add(1);
-				factors.add(number);
 		int numberOfFactors = factors.size(); // assuming 1 and number itself is a factor
 		
 		
-		for (int i = 2; i < number; i++)
-		{
-			// Assuming we 'DO NOT' count the first two factors
-			// numberOfFactors = factors.size() - 2;
-			
+		for (int i = 2; i <= number; i++)
+		{			
 			// Assuming we DO count the first two factors
 			numberOfFactors = factors.size();
 			int tempStorage = number % i;
@@ -59,23 +54,25 @@ public class IsPrime
 			{
 				isAFactor = true;
 				factors.add(i);
-				// deal with partner factor as well
 			}
 			
 			
 			isAFactor = false; // switch boolean checker off
 		}
-		System.out.println("There are " + numberOfFactors + " factors for the number ---> " + number);
+		System.out.println("There are " + numberOfFactors + " factors for ---> " + number);
 		
 		System.out.println("The factors of " + number + " are: " + factors.toString());
 		if (numberOfFactors > 2)
 		{
 			System.out.println("This number is not prime");
+			System.out.println(System.currentTimeMillis() - start + " ms");
+			System.out.println("This number is prime");
 			return true;
 		}
 		else
 		{
 			System.out.println("This number is prime");
+			System.out.println(System.currentTimeMillis() - start + " ms");
 			return false;
 		}
 	}
