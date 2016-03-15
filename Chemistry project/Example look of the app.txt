@@ -1,0 +1,19 @@
+user input: H20 + C02 --> 2_H30 + CO
+
+user input: H20 + C02 
+
+H
+Hydrogen
+
+
+Element Name: Hydrogen
+Atomic Number: 1
+Isotope: 2.4
+
+H20
+Hydrogen Peroxide
+
+Element Name:  Hydrogen Peroxide
+Atomic Number: 1
+Isotope: 2.5
+Not seen by user: "Hydrogen" "Peroxide" "H20"
