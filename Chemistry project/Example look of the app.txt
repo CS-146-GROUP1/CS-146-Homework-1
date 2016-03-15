@@ -17,3 +17,13 @@ Element Name:  Hydrogen Peroxide
 Atomic Number: 1
 Isotope: 2.5
 Not seen by user: "Hydrogen" "Peroxide" "H20"
+
+
+
+Classify these inputs as "Balance Equation", or "Element Lookup"
+1 - Element Look Up
+H - Element Look Up
+Hydrogen - Element Look up
+H20 + C02 - Balance Equation
+
+
