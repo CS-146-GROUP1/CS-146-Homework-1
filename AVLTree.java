@@ -209,15 +209,21 @@ private void postorder(NODE r)
   }
 }
 
-public void delete()
-{
+  public void delete()
+  {
   
-}
+  }
 
-private deleteNode()
-{
-  
-}
-
-
+  private deleteNode(int x, NODE t)
+  {
+    if (t == null)
+    {
+      return t;
+    }
+    int compareResult = x.compareTo(t.data);
+    if(compareResult < 0)
+    {
+      t.left = remove(x, t.left );
+    }
+  }
 }
